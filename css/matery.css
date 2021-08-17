@@ -49,9 +49,9 @@
 }
 
 body {
-    background-color: #eaeaea;
+    background: linear-gradient(60deg,  rgba(171, 195, 197, 0.35) 5%, rgba(171, 195, 197, 0.35) );
     margin: 0;
-    color: #34495e;
+    color:#666699;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -256,7 +256,7 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #66CCFF 0%, #66CCFF 100%);
 }
 
 .text-color {
@@ -564,11 +564,11 @@ header .go-back i {
 .post-cover {
     height: 40vh !important;
 }
-
-.bg-cover:after {
+/* 颜色遮罩 */
+/* .bg-cover:after {
     -webkit-animation: rainbow 60s infinite;
     animation: rainbow 60s infinite;
-}
+} */
 
 .bg-cover:before,
 .bg-cover:after {
@@ -900,6 +900,7 @@ article a:hover {
 }
 
 article .card {
+    background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
 }
