@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title>web开发比赛经验（2）</title>
+      <link href="/2021/09/21/web-kai-fa-bi-sai-jing-yan-2/"/>
+      <url>/2021/09/21/web-kai-fa-bi-sai-jing-yan-2/</url>
+      
+        <content type="html"><![CDATA[<p>项目运行：</p><p>1、首先项目先从web.xml 开始，初始化了spring-mvc-config.xml.</p><p><img src="/2021/09/21/web-kai-fa-bi-sai-jing-yan-2/image-20210921165640552.png"></p><p>2、spring-mvc-config.xml </p><p>3、</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web开发比赛经验（1）</title>
+      <link href="/2021/09/19/web-kai-fa-bi-sai-jing-yan/"/>
+      <url>/2021/09/19/web-kai-fa-bi-sai-jing-yan/</url>
+      
+        <content type="html"><![CDATA[<p>  Web应用软件开发赛项，主要面向Web应用软件开发工程师、Java开发工程师、软件技术支持工程师等核心岗位。<img src="/2021/09/19/web-kai-fa-bi-sai-jing-yan/image-20210919094701844-16320160272921.png" alt="image-20210919094701844"></p><p>获得省一可以保送二本，获得国一二三可以保送一本。</p><p>项目开发：</p><p>1、利用eclipse导入项目。文件——导入——选择（现有项目到工作目录）——在”选项“列表勾选（将项目复制到工作目录）</p><p>2、配置数据库，把sql文件，shopping.sql执行建立数据库。</p><p>3、导入项目后会发现一堆爆红，首先你先配置Java环境，右击项目名——构建路径，把jdk环境配置好。</p><p>4、接下来就可以正常运行了，但是还是会报一堆红，</p><p>1.1、（jsp报错Missing end tag for “c:forEach和Missing end tag for “c:if解决方法）     </p><p><a href="https://blog.csdn.net/fuzhijieabc/article/details/117436368">(4条消息) Missing end tag for “c:forEach和Missing end tag for “c:if解决方法_fuzhijieabc的博客-CSDN博客</a></p><p>1.2、Referenced file contains errors 完美解决方法</p><p><a href="https://blog.csdn.net/qq_42923798/article/details/81634252">(4条消息) Referenced file contains errors 完美解决方法_蜻蜓队长NA-CSDN博客</a></p><p>5、解决这两个问题接下来就不会报错了，但是你运行项目你会发现连接不上数据库，这个时候检查数据库版本，更换数据库jar包，更改配置文件，8.0以上是com.mysql.cj.jdbc.Driver.系统的登陆密码就在user表里面，但是需要md5解码。</p><p>6、正常登陆后，看赛题最后一题，需要我们自己写一个幻灯片菜单。看到option菜单，与我们想要的效果相似，直接复制更改。（因为它是web项目在WebContent——WEB-INF——views-admin，先找到main下的left.jsp跟着写一个li，接下来在admin下在建一个hdp文件夹里面的文件从option文件夹复制更改）</p><p>7、接下来就是更改hdpList.jsp,按题目要求给表单建立数据表，HTML页面自行更改，找到下图这个位置给表中的想应字段代值。</p><p><img src="/2021/09/19/web-kai-fa-bi-sai-jing-yan/image-20210919112524878.png" alt="image-20210919112524878"></p><p>8.页面写好后，要想跳转需要用到spring的注解，从spring-mvc-config.xml中可以看到通过扫描注解，接下来找到controller包，复制一个hdpController。保留以下代码即可</p><p><img src="/2021/09/19/web-kai-fa-bi-sai-jing-yan/image-20210919113025876.png" alt="image-20210919113025876"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web学习路线</title>
+      <link href="/2021/09/11/web-xue-xi-lu-xian/"/>
+      <url>/2021/09/11/web-xue-xi-lu-xian/</url>
+      
+        <content type="html"><![CDATA[<p>mybatis开发流程：</p><p>mybatis-config.xml</p><p>Option.java 持久层实体类</p><p>OptionMapper.java 数据访问接口DAO</p><p>OptionMapper.xml</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>移动保号套餐</title>
       <link href="/2021/08/18/yi-dong-bao-hao-tao-can/"/>
       <url>/2021/08/18/yi-dong-bao-hao-tao-can/</url>

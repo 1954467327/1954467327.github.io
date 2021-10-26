@@ -6,7 +6,7 @@
   <link href="https://1954467327.github.io/atom.xml" rel="self"/>
   
   <link href="https://1954467327.github.io/"/>
-  <updated>2021-08-18T11:37:47.087Z</updated>
+  <updated>2021-09-21T09:09:55.779Z</updated>
   <id>https://1954467327.github.io/</id>
   
   <author>
@@ -15,6 +15,74 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>web开发比赛经验（2）</title>
+    <link href="https://1954467327.github.io/2021/09/21/web-kai-fa-bi-sai-jing-yan-2/"/>
+    <id>https://1954467327.github.io/2021/09/21/web-kai-fa-bi-sai-jing-yan-2/</id>
+    <published>2021-09-21T08:54:37.000Z</published>
+    <updated>2021-09-21T09:09:55.779Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;项目运行：&lt;/p&gt;
+&lt;p&gt;1、首先项目先从web.xml 开始，初始化了spring-mvc-config.xml.&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>web开发比赛经验（1）</title>
+    <link href="https://1954467327.github.io/2021/09/19/web-kai-fa-bi-sai-jing-yan/"/>
+    <id>https://1954467327.github.io/2021/09/19/web-kai-fa-bi-sai-jing-yan/</id>
+    <published>2021-09-19T01:39:00.000Z</published>
+    <updated>2021-09-19T03:31:42.272Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;  Web应用软件开发赛项，主要面向Web应用软件开发工程师、Java开发工程师、软件技术支持工程师等核心岗位。&lt;img</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>web学习路线</title>
+    <link href="https://1954467327.github.io/2021/09/11/web-xue-xi-lu-xian/"/>
+    <id>https://1954467327.github.io/2021/09/11/web-xue-xi-lu-xian/</id>
+    <published>2021-09-11T05:58:15.000Z</published>
+    <updated>2021-09-20T02:46:22.084Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;mybatis开发流程：&lt;/p&gt;
+&lt;p&gt;mybatis-config.xml&lt;/p&gt;
+&lt;p&gt;Option.java 持久层实体类&lt;/p&gt;
+&lt;p&gt;OptionMapper.java</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>移动保号套餐</title>
