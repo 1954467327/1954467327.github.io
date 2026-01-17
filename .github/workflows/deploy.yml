@@ -3,7 +3,7 @@ name: deploy-blog
 on:
   push: # 每次push就会触发workflows
     branches:
-      - deploy
+      - main
   workflow_dispatch:
 
 jobs:
