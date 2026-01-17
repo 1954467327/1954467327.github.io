@@ -40,7 +40,7 @@ jobs:
         with:
           personal_token: ${{ secrets.ACCESS_TOKEN }}  #你的 开发者token secrets.xxxxx
           external_repository: 1954467327/1954467327.github.io  #你的 github.io 项目
-          publish_dir: ./dist          # 你的源码打包目录，我的在 ./dist下。
+          publish_dir: ./docs/.vuepress/dist          # 你的源码打包目录，我的在 ./dist下。
           publish_branch: deploy       # 仓库 B 的发布分支
           user_name: 1954467327
           user_email: 1954467327@qq.com
