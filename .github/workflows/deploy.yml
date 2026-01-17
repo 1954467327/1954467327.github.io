@@ -1,57 +1,39 @@
-# 工作流的名称
-name: deploy
-# 从工作流生成的工作流运行的名称
-run-name: Deploy by @${{ github.actor }}  
-# 触发工作流的事件
-on:
-  push:
-    branches: [ deploy ] # 当 main 分支有新的推送时，此工作流会被启动。
-  workflow_dispatch: # 或者手动触发工作流时，此工作流会被启动。
-# 当前流程要执行的任务
-jobs:
-  build:
-    # 这部分指定了作业将在 ubuntu-latest 环境下运行。
-    runs-on: ubuntu-latest
-	# 每个任务下的运行步骤，短横杠 - 表示一个步骤，从上至下依次执行。
-    steps:
-      - name: checkout # 检出代码
-      - uses: actions/checkout@v2 # 使用 actions/checkout action 检出代码到工作空间。
-      
-	  # 这一步安装 Node.js v16。
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '16'
-            
-     # 缓存 npm node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        id: npm-cache
-        with:
-          path: |
-     		~/.npm
-      		**/node_modules
-          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-cache-
+name: deploy-blog
 
-      # 安装依赖 npm
-      - name: Install dependencies
-        # 如果没有命中缓存才执行 npm install
-        if: steps.npm-cache.outputs['restore-keys'] == ''
+on:
+  push: # 每次push就会触发workflows
+    branches:
+      - deploy
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 修改为 write 权限
+      pages: write
+      id-token: write
+
+    steps:
+      - name:
+        uses: actions/checkout@v4
+
+      - name:
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name:
         run: npm install
 
-     # 运行构建脚本
-      - name: Run Build Script
-        run: npm run build
-        
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name:
+        run: npm run build # 注意查看package.json确认命令是否正确
+
+      - name:
+        uses: peaceiris/actions-gh-pages@v3 # 如果你是推送到其他仓库请修改！
         with:
-        # env:
-          # 部署到 deploy 分支
-          BRANCH: deploy
-          # 部署目录为 VuePress 的默认输出目录
-          FOLDER: docs/.vuepress/dist
-          # 当前仓库的密钥
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .vuepress/dist # 注意检查位置是否正确
+          commit_message: 'Deploy to GitHub Pages'
+          publish_branch: deploy  # 可选，默认就是 gh-pages，可以省略
