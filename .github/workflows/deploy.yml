@@ -16,7 +16,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
+      - name: Setup npm
         uses: npm/action-setup@v4 #安装你的pnpm 因为他需要下载依赖，之前让你测试就是为了这里不出错
         with:
           version: 10.0.0
