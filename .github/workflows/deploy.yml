@@ -1,39 +1,46 @@
-name: deploy-blog
+name: Build and Deploy VuePress
 
 on:
-  push: # 每次push就会触发workflows
-    branches:
-      - deploy
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - "docs/**/*"               # 监听 docs 下所有文件变动
+      - ".vuepress/**/*"          # 监听配置文件变动
+      - ".github/workflows/**"    # 监听 workflow 变动
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # 修改为 write 权限
-      pages: write
-      id-token: write
 
     steps:
-      - name:
+      - name: Checkout source
         uses: actions/checkout@v4
 
-      - name:
-        uses: actions/setup-node@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4 #安装你的pnpm 因为他需要下载依赖，之前让你测试就是为了这里不出错
         with:
-          node-version: '18'
-          cache: 'npm'
+          version: 10.0.0
 
-      - name:
-        run: npm install
-
-      - name:
-        run: npm run build # 注意查看package.json确认命令是否正确
-
-      - name:
-        uses: peaceiris/actions-gh-pages@v3 # 如果你是推送到其他仓库请修改！
+      - name: Setup Node.js
+        uses: actions/setup-node@v4 #安装你的node.js 使用你的项目版本，因为你的项目已经经过测试了
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .vuepress/dist # 注意检查位置是否正确
-          commit_message: 'Deploy to GitHub Pages'
-          publish_branch: deploy  # 可选，默认就是 gh-pages，可以省略
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile   #安装依赖
+
+      - name: Build VuePress site
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: pnpm docs:build #你项目里面的构建命令，是由你的 package.json 文件设置的
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 #使用 gh-pages 功能来拉取
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}  #你的 开发者token secrets.xxxxx
+          external_repository: 1954467327/1954467327.github.io  #你的 github.io 项目
+          publish_dir: ./dist          # 你的源码打包目录，我的在 ./dist下。
+          publish_branch: deploy       # 仓库 B 的发布分支
+          user_name: 1954467327
+          user_email: 1954467327@qq.com
