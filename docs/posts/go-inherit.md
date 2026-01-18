@@ -2,7 +2,7 @@
 lang: zh-CN
 title: Go语言的继承
 description: Go语言也支持面向对象，但不想Java一样严格遵循面向对象
-date: 2026-01-16
+date: 2026-01-18
 category:
   - Goland
 tag:
