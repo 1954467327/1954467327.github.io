@@ -22,7 +22,7 @@ tag:
 
 ## 代码实现
 
-```
+```go
 // person.go - 定义包
 package model
 
@@ -84,7 +84,7 @@ func (p *person) String() string {
 
 ```
 
-```
+```go
 // main.go - 使用示例
 package main
 
