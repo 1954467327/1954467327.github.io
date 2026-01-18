@@ -10,7 +10,8 @@ export default defineUserConfig({
   description: '记录生活，分享知识',
 
   theme: defaultTheme({
-    logo: 'https://vuejs.press/images/hero.png',
+    // Put `logo.png` in `docs/.vuepress/public/` so it is served as `/logo.png`
+    logo: '/logo.png',
 
     navbar: [
       '/',
