@@ -160,7 +160,7 @@ setup_trust() {
     local host=$1
     local password=$(get_password "$host")
     
-    echo -e "\n${GREEN}[步骤3] 与主机 $host 建立互信...${NC}"
+    echo -e "\n${GREEN}[步骤2] 与主机 $host 建立互信...${NC}"
     
     # 上传本地公钥到远程
     expect << EOF
