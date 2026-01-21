@@ -61,7 +61,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 #//////////////////////////////////////////////////////////////////////////////////////////////////##
 # Without the owner's prior written consent,no decompiling or reverse-engineering shall be allowed.#
 #                                                                                                  #
-# Support：400-6288-116                                                                            #
+                                                                 #
 #//////////////////////////////////////////////////////////////////////////////////////////////////#
 
 root@10.19.31.36's password: 
