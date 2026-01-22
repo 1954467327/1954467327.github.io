@@ -4,7 +4,7 @@ title: Linux日志排查命令
 description: 由于日志内容的复查情况以及某些模块存在日志量巨大，需要实时复现才好查看日志
 date: 2026-01-21
 category:
-  - linux
+  - Linux
 tag:
   - 日志排查
 ---
