@@ -119,15 +119,14 @@ NC='\033[0m' # No Color
 
 # 配置部分
 HOSTS=(
-"10.19.17.140"
-"10.19.17.26"
+"10.19.31.166"
 #"82.204.80.20"
 # 添加更多主机IP...
 )
 # 远程用户名
 remoteUser="appuser"
 #默认密码
-DEFAULT_PASSWORD=App753951+
+DEFAULT_PASSWORD="2J02?{zSJ"
 #自定义密码
 declare -A HOST_PASSWORDS=(
 	["10.19.17.140"]="XCtsat@2025aaa"
@@ -178,15 +177,40 @@ setup_trust() {
 EOF
 }
 
+# 独立的转义函数
+escape_password() {
+    local password="$1"
+    echo "$password" | sed \
+        -e 's/\\/\\\\/g' \
+        -e 's/\"/\\\"/g' \
+        -e 's/\$/\\$/g' \
+        -e 's/{/\\{/g' \
+        -e 's/}/\\}/g' \
+        -e 's/\[/\\\[/g' \
+        -e 's/\]/\\\]/g' \
+        -e 's/\//\\\//g' \
+        -e 's/`/\\`/g' \
+        -e 's/!/\\!/g'
+}
+
 # 获取密码
 get_password() {
-	local host=$1
-	if [ -n "${HOST_PASSWORDS[$host]:-}" ]; then
-		echo "${HOST_PASSWORDS[$host]}"
-	else
-		echo "${DEFAULT_PASSWORD}"
-	fi
+    local host=$1
+	# 明确定义局部变量
+    local password
+    
+    # 根据条件赋值
+    if [ -n "${HOST_PASSWORDS[$host]:-}" ]; then
+        password="${HOST_PASSWORDS[$host]}"
+    else
+        password="${DEFAULT_PASSWORD}"
+    fi
 
+    # 调用转义函数并捕获结果
+    password=$(escape_password "$password")
+    
+    # 只返回一次最终值
+    echo "$password"
 }
 
 # 主流程
@@ -205,7 +229,8 @@ main() {
     
     echo -e "\n${GREEN}所有主机配置完成!${NC}"
 }
-#执行主流程
+
+# 执行主流程
 main
 
 ```
