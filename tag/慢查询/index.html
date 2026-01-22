@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.20" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <title>Tag 慢查询 | 未之离忧</title><meta name="description" content="记录生活，分享知识">
+    <link rel="preload" href="/assets/style-iEG9IkOu.css" as="style"><link rel="stylesheet" href="/assets/style-iEG9IkOu.css">
+    <link rel="modulepreload" href="/assets/app-BrotdA_G.js"><link rel="modulepreload" href="/assets/index.html-Dj1Av5VU.js">
+    <link rel="prefetch" href="/assets/index.html-Bo_Yt1hl.js" as="script"><link rel="prefetch" href="/assets/get-started.html-K9maPBv-.js" as="script"><link rel="prefetch" href="/assets/article-error-code.html-CGCvPrsb.js" as="script"><link rel="prefetch" href="/assets/go-inherit.html-BT6np1F4.js" as="script"><link rel="prefetch" href="/assets/go-package-deploy.html-BJdIeHWJ.js" as="script"><link rel="prefetch" href="/assets/go-packaging.html-DcOUZ2Pu.js" as="script"><link rel="prefetch" href="/assets/go-polymorphic.html-OPaCvATm.js" as="script"><link rel="prefetch" href="/assets/linux-mutual-trust.html-CouBR6Oc.js" as="script"><link rel="prefetch" href="/assets/logfile-search.html-CQ8CGRCA.js" as="script"><link rel="prefetch" href="/assets/mobile-h5.html-BaMjQaTC.js" as="script"><link rel="prefetch" href="/assets/postgres-slow-sql.html-CZdSbCwD.js" as="script"><link rel="prefetch" href="/assets/404.html-C04HZS95.js" as="script"><link rel="prefetch" href="/assets/index.html-Dilf0yZ1.js" as="script"><link rel="prefetch" href="/assets/index.html-6TNCeLFL.js" as="script"><link rel="prefetch" href="/assets/index.html-DIXHEfC5.js" as="script"><link rel="prefetch" href="/assets/index.html-CpCwtlBJ.js" as="script"><link rel="prefetch" href="/assets/index.html-Loe3lBM-.js" as="script"><link rel="prefetch" href="/assets/index.html-C64a76C7.js" as="script"><link rel="prefetch" href="/assets/index.html-D1uHg72Y.js" as="script"><link rel="prefetch" href="/assets/index.html-CBgi7SHp.js" as="script"><link rel="prefetch" href="/assets/index.html-B_Su8Q0A.js" as="script"><link rel="prefetch" href="/assets/index.html-Bgt8EWxm.js" as="script"><link rel="prefetch" href="/assets/index.html-DGhjJlm9.js" as="script"><link rel="prefetch" href="/assets/index.html-DhxbB_IE.js" as="script"><link rel="prefetch" href="/assets/index.html-CyUuXQ48.js" as="script"><link rel="prefetch" href="/assets/index.html-BPp00sC1.js" as="script"><link rel="prefetch" href="/assets/index.html-Z0XaRDyt.js" as="script"><link rel="prefetch" href="/assets/index.html-C4gL0uxD.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container no-sidebar external-link-icon" vp-container><!--[--><header class="vp-navbar" vp-navbar><div class="vp-toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a class="route-link" href="/"><img class="vp-site-logo" src="/logo.png" alt="未之离忧"><span class="vp-site-name vp-hide-mobile" aria-hidden="true">未之离忧</span></a></span><div class="vp-navbar-items-wrapper" style=""><!--[--><!--]--><nav class="vp-navbar-items vp-hide-mobile" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="route-link auto-link" href="/" aria-label="主页"><!--[--><!--[--><!--]--><!--]-->主页<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/article/" aria-label="文章"><!--[--><!--[--><!--]--><!--]-->文章<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/category/" aria-label="分类"><!--[--><!--[--><!--]--><!--]-->分类<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link route-link-active auto-link" href="/tag/" aria-label="标签"><!--[--><!--[--><!--]--><!--]-->标签<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/timeline/" aria-label="时间线"><!--[--><!--[--><!--]--><!--]-->时间线<!--[--><!--[--><!--]--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button type="button" class="vp-toggle-color-mode-button" title="toggle color mode"><svg class="light-icon" viewbox="0 0 32 32" style=""><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg class="dark-icon" viewbox="0 0 32 32" style="display:none;"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><!----></div></header><!--]--><div class="vp-sidebar-mask"></div><!--[--><aside class="vp-sidebar" vp-sidebar><nav class="vp-navbar-items" aria-label="site navigation"><!--[--><div class="vp-navbar-item"><a class="route-link auto-link" href="/" aria-label="主页"><!--[--><!--[--><!--]--><!--]-->主页<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/article/" aria-label="文章"><!--[--><!--[--><!--]--><!--]-->文章<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/category/" aria-label="分类"><!--[--><!--[--><!--]--><!--]-->分类<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link route-link-active auto-link" href="/tag/" aria-label="标签"><!--[--><!--[--><!--]--><!--]-->标签<!--[--><!--[--><!--]--><!--]--></a></div><div class="vp-navbar-item"><a class="route-link auto-link" href="/timeline/" aria-label="时间线"><!--[--><!--[--><!--]--><!--]-->时间线<!--[--><!--[--><!--]--><!--]--></a></div><!--]--></nav><!--[--><!--]--><!----><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><div class="tag-wrapper"><!--[--><a class="route-link tag" href="/tag/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/">开发规范 <span class="tag-num">1</span></a><a class="route-link tag" href="/tag/%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF%E7%A0%81/">自定义错误码 <span class="tag-num">1</span></a><a class="route-link tag" href="/tag/goland/">Goland <span class="tag-num">4</span></a><a class="route-link tag" href="/tag/%E9%83%A8%E7%BD%B2/">部署 <span class="tag-num">1</span></a><a class="route-link tag" href="/tag/%E4%BA%92%E4%BF%A1/">互信 <span class="tag-num">1</span></a><a class="route-link tag" href="/tag/%E6%97%A5%E5%BF%97%E6%8E%92%E6%9F%A5/">日志排查 <span class="tag-num">1</span></a><a class="route-link tag" href="/tag/%E7%A7%BB%E5%8A%A8h5/">移动H5 <span class="tag-num">1</span></a><a class="route-link route-link-active tag" href="/tag/%E6%85%A2%E6%9F%A5%E8%AF%A2/">慢查询 <span class="tag-num">1</span></a><a class="route-link tag" href="/tag/postgres/">postgres <span class="tag-num">1</span></a><!--]--></div><div class="article-wrapper"><!----><!--[--><article class="article"><header class="title">postgres慢查询排查</header><hr><div class="article-info"><!----><span class="date">Date: 1/16/2026</span><span class="category">Category: 数据库</span><span class="tag">Tag: 慢查询, postgres</span></div><!----></article><!--]--></div></main><!--]--></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-BrotdA_G.js" defer></script>
+  </body>
+</html>
