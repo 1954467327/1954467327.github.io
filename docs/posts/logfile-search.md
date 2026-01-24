@@ -121,3 +121,35 @@ HTTP/1.1" "-"
 6917288 "https://10.19.31.166:8443/uni-app/assets/index-95ded47c.css"
 6917288 "https://10.19.31.166:8443/uni-app/assets/index-95ded47c.css"
 ```
+
+## 六、查看当前连接数
+文件描述符限制（File Descriptor Limit）
+每个 TCP 连接都会消耗一个文件描述符。操作系统对每个进程能打开的文件描述符数量有上限。
+``` shell
+# 查看某个进程的连接数（假设服务器监听 8080 端口）
+lsof -i :8080 | wc -l
+
+# 或使用 netstat（较老系统）
+netstat -an | grep :8080 | wc -l
+```
+
+## 七、查看当前进程占用的内存
+%mem：物理内存使用百分比
+rss：Resident Set Size，实际使用的物理内存（KB）
+vsz：Virtual Memory Size，虚拟内存大小（KB）
+``` shell
+# 通过进程名查找
+ps aux | grep your_process_name
+
+# 通过 PID 查看
+ps -p <PID> -o pid,ppid,cmd,%mem,%cpu,rss,vsz
+
+# 交互式查看
+top
+
+# 按内存排序
+top -o %MEM
+
+# 查看指定 PID
+top -p <PID>
+```
