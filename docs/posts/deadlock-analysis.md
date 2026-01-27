@@ -30,8 +30,8 @@ tag:
 | 21:20:58 | [68]步骤完成(141ms)  | **正在执行[68]步骤**(864ms) | **执行速度差异出现** |
 | 21:20:58 | [80]步骤死锁失败       | [68]步骤继续执行            | **死锁发生**     |
 | 21:20:58 | [81],[82]步骤死锁    | [80]步骤成功(88ms)        | 主机连续失败       |
-| 21:20:58 | [84]步骤开始数据复制     | [81]步骤成功(155ms)       | 主机开始长时间操作    |
-| 21:21:04 | [85]步骤数据复制中      | **[82]步骤锁等待超时**           | **备机被阻塞**        |
+| 21:20:58 | [84]步骤开始创建存储过程    | [81]步骤成功(155ms)       | 主机开始长时间操作    |
+| 21:21:04 | **[85]步骤调用数据复制存储过程中**      | **[82]步骤锁等待超时**           | **备机被阻塞**        |
 | 21:21:24 | [85]步骤完成(25.61s) | 后续步骤继续执行              | 主机恢复         |
 
 ## 🔍 根本原因分析
@@ -69,11 +69,10 @@ tag:
 
 #### 第二阶段：循环等待形成
 
-主机在等待MDL锁的同时，脚本继续执行了[84]步骤：
+主机在等待MDL锁的同时，脚本继续执行了[85]步骤：
 
 ```sql
-CREATE TABLE if not exists tbl_p6_organization like tbl_organization;
-insert into tbl_p6_organization select * from tbl_organization;  -- 耗时25.61秒
+call copy_organization();  -- 耗时25.61秒
 ```
 
 该操作持有了`tbl_organization`表的数据读锁，形成了循环等待：
@@ -97,6 +96,21 @@ AND LOWER(INDEX_NAME) = LOWER('idx_tbl_organization_uiddomainid');
 SET @indexsql = 'alter table tbl_organization add index ...';
 PREPARE stmtindex FROM @indexsql;
 EXECUTE stmtindex;
+```
+
+``` sql
+/** 需要读锁执行时间25s */
+CREATE TABLE if not exists tbl_p6_organization like tbl_organization ;
+          CREATE TABLE if not exists tbl_p6_alarmconnector like tbl_alarmconnector;
+          /** 复制组织架构数据到p6 */
+          DROP PROCEDURE IF EXISTS copy_organization;
+          CREATE PROCEDURE copy_organization()
+          begin
+          if not exists (select 1 from tbl_p6_organization where uidroleid='1') then
+          insert into tbl_p6_organization select * from tbl_organization;
+          insert into tbl_p6_alarmconnector select * from tbl_alarmconnector;
+          end if;
+          end
 ```
 
 ## 📊 错误类型对比分析
