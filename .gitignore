@@ -1,3 +1,7 @@
 node_modules/
 docs/.vuepress/.cache/
 docs/.vuepress/.temp/
+.idea/
+.DS_Store
+.github/
+openspec/
