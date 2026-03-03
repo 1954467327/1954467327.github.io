@@ -56,9 +56,10 @@ GONOSUMDB=''
 go会在当前目录根据环境变量自动生成可执行文件，如：main；可以通过sh main 执行即可。
 
 #### 如果需要选择系统架构打包，可以自定义指定：
+-trimpath：去掉打包的绝对路径
 ``` shell
 # 交叉编译
-GOOS=linux GOARCH=amd64 go build -o app-linux main.go
+GOOS=linux GOARCH=amd64 go build -trimpath -o app-linux main.go
 ```
 #### 查看go支持架构:go tool dist list
 <操作系统>/<架构>
