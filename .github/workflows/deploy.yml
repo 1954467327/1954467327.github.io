@@ -28,7 +28,8 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile   #安装依赖
+        # 使用 --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Build VuePress site
         env:
