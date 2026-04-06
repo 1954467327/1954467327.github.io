@@ -1,4 +1,5 @@
 import { blogPlugin } from '@vuepress/plugin-blog'
+import { searchPlugin } from '@vuepress/plugin-search'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
@@ -35,6 +36,23 @@ export default defineUserConfig({
   }),
 
   plugins: [
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: '搜索文章',
+        },
+      },
+      maxSuggestions: 10,
+      getExtraFields: (page) => {
+        const { frontmatter, excerpt } = page
+
+        return [
+          typeof excerpt === 'string' ? excerpt : '',
+          ...(Array.isArray(frontmatter.category) ? frontmatter.category : []),
+          ...(Array.isArray(frontmatter.tag) ? frontmatter.tag : []),
+        ].filter(Boolean)
+      },
+    }),
     blogPlugin({
       // Only files under posts are articles
       filter: ({ filePathRelative }) =>
