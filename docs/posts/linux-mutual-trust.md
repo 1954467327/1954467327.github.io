@@ -234,3 +234,48 @@ main() {
 main
 
 ```
+
+## 5. 批量互信检测脚本
+```
+#!/bin/bash
+# check_ssh_trust.sh
+
+# 配置
+USER="root"                    # SSH用户
+SSH_PORT="22"                  # SSH端口
+TIMEOUT=5                      # 连接超时时间(秒)
+SSH_OPTIONS="-o ConnectTimeout=$TIMEOUT -o BatchMode=yes -o StrictHostKeyChecking=no"
+
+# 主机列表
+HOSTS=(
+    "192.168.1.101"
+    "192.168.1.102"
+    "192.168.1.103"
+    "192.168.1.104"
+    "192.168.1.105"
+)
+
+# 颜色定义
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}=== SSH互信检测脚本 ===${NC}"
+echo -e "当前主机: $(hostname)"
+echo -e "检测用户: $USER"
+echo -e "SSH端口: $SSH_PORT"
+
+# 检测本机到各节点的互信
+echo -e "\n${YELLOW}[1] 检测本机到各节点的互信:${NC}"
+for host in "${HOSTS[@]}"; do
+    echo -n "检测 $USER@$host ... "
+    
+    if ssh $SSH_OPTIONS -p $SSH_PORT $USER@$host "echo 'SSH信任检测成功'" &>/dev/null; then
+        echo -e "${GREEN}✓ 信任${NC}"
+    else
+        echo -e "${RED}✗ 不信任${NC}"
+    fi
+done
+```
