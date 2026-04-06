@@ -8,7 +8,10 @@
     "docs:build": "vuepress build docs",
     "docs:clean-dev": "vuepress dev docs --clean-cache",
     "docs:dev": "vuepress dev docs",
-    "docs:update-package": "npx vp-update"
+    "docs:update-package": "npx vp-update",
+    "preinstall": "echo '检查依赖...'",
+    "postinstall": "echo '依赖安装完成'",
+    "update:lock": "pnpm install --no-frozen-lockfile"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.20",
